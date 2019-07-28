@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href= "/static/style.css">
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</head>
+<body>
+<p><font size = '5'>
+                {% if session_user_name %}
+<p>Welcome <b>{{ session_user_name }}</b>
+                <p>
+                <a href="{{ url_for('logout') }}">Logout</a></p>
+                {% endif %}
+    {% if session_user_name == 'Test' %}
+<p>You have logged in with test credentials please create databases and then login with actual credentials
+    for full data display.</p>
+    <p align = 'center'><font size = '4'>The complete data display will be in below table.</p></font>
+    {% endif %}
+
+</p></font>                
+      <p align = 'center'><font size = '4'>Displaying the records from database where city is SACRAMENTO and the price is greater than 100000, ordered by price.</font> </p>
+    <table border = 1 align = 'center'>
+        <tr align = 'center'>
+        <th>Street</th>
+        <th>City</th>
+        <th>Zip</th>
+        <th>State</th>
+        <th>Beds</th>
+        <th>Baths</th>
+        <th>Type</th>
+        <th>Price</th>        
+        </tr>
+         {% for val in info %}
+            <tr>
+                <th> {{ val[0] }} </th>
+                <th> {{ val[1] }} </th>
+                <th> {{ val[2] }} </th>
+                <th> {{ val[3] }} </th>
+                <th> {{ val[4] }} </th>
+                <th> {{ val[5] }} </th>
+                <th> {{ val[6] }} </th>
+                <th> {{ val[7] }} </th>
+            </tr>
+         {% endfor %}
+      </table>
+      <p align = 'center'>Total count of entries = {{count}}</p>
+      <p align = 'right'>Created by Dhimanshu (dhimanshu1508@gmail.com)</p>
+</body>
+</html>

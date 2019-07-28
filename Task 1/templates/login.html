@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+{% block body %}
+{% if session['logged_in'] %}
+<p>You're logged in already!</p>
+{% else %}
+<body>
+<p>Note:- If you do not have a database of credentials and want to test the program you can use
+   username and password as <u>test</u> but be sure not to use either of this with your database
+   credentials. For information regarding databases read the instructions file in the folder.</p>
+
+</body>
+<form action="/login" method="POST">
+	<div class="login">
+		<div class="login-screen">
+			<div class="app-title">
+				<h1>Login Screen</h1>
+				<h5>Please enter your credentials</h5>
+			</div>
+                 {% if error %}
+                <p align = 'center' class=error><font color = 'red'></strong> {{ error }}</p></font>
+                {% endif %}
+			<div class="login-form">
+				<div class="control-group">
+				<input type="text" class="login-field" value="" placeholder="username" name="username">
+				<label class="login-field-icon fui-user" for="login-name"></label>
+				</div>
+ 
+				<div class="control-group">
+				<input type="password" class="login-field" value="" placeholder="password" name="password">
+				<label class="login-field-icon fui-lock" for="login-pass"></label>
+				</div>
+ 
+                <input type="submit" value="Log in" class="btn btn-primary btn-large btn-block" >
+			    <br>
+			</div>
+		</div>
+	</div>
+</form>
+ 
+{% endif %}
+{% endblock %}
